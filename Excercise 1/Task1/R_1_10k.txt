@@ -1,0 +1,63 @@
+START
+Testing with testRepetitions = 10 and testIterations = 10000
+
+Rijndael keysize = 256 blocksize = 256
+Rijndael encryption: Elapsed=189,5191 per encrypt 0,01895191
+Rijndael decryption: Elapsed=169,4859 per decrypt 0,01694859
+Rijndael Is the text the same ? True
+
+Rijndael keysize = 256 blocksize = 128
+Rijndael encryption: Elapsed=139,7391 per encrypt 0,01397391
+Rijndael decryption: Elapsed=167,8084 per decrypt 0,01678084
+Rijndael Is the text the same ? True
+
+Aes keysize = 256
+AES encryption: Elapsed=121,8783 per encrypt 0,01218783
+AES decryption: Elapsed=123,7082 per decrypt 0,01237082
+AES Is the text the same ? True
+
+
+END
+
+START
+Testing with testRepetitions = 1000 and testIterations = 10000
+
+Rijndael keysize = 256 blocksize = 256
+Rijndael encryption: Elapsed=10513,7305 per encrypt 1,05137305
+Rijndael decryption: Elapsed=11603,501 per decrypt 1,1603501
+Rijndael Is the text the same ? True
+
+Rijndael keysize = 256 blocksize = 128
+Rijndael encryption: Elapsed=10342,2789 per encrypt 1,03422789
+Rijndael decryption: Elapsed=11582,1574 per decrypt 1,15821574
+Rijndael Is the text the same ? True
+
+Aes keysize = 256
+AES encryption: Elapsed=1478,794 per encrypt 0,1478794
+AES decryption: Elapsed=1892,7731 per decrypt 0,18927731
+AES Is the text the same ? True
+
+
+END
+
+START
+Testing with testRepetitions = 10000 and testIterations = 10000
+
+Rijndael keysize = 256 blocksize = 256
+Rijndael encryption: Elapsed=102220,3735 per encrypt 10,22203735
+Rijndael decryption: Elapsed=116831,5945 per decrypt 11,68315945
+Rijndael Is the text the same ? True
+
+Rijndael keysize = 256 blocksize = 128
+Rijndael encryption: Elapsed=106089,6875 per encrypt 10,60896875
+Rijndael decryption: Elapsed=120796,2812 per decrypt 12,07962812
+Rijndael Is the text the same ? True
+
+Aes keysize = 256
+AES encryption: Elapsed=18849,2903 per encrypt 1,88492903
+AES decryption: Elapsed=23780,9485 per decrypt 2,37809485
+AES Is the text the same ? True
+
+
+END
+

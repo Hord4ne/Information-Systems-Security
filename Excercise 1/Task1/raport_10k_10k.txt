@@ -1,0 +1,24 @@
+START
+Testing with testRepetitions = 10000 and testIterations = 10000
+
+Aes keysize = 128
+AES encryption: Elapsed=17402,6955 per encrypt 1,74026955
+AES decryption: Elapsed=23111,9571 per decrypt 2,31119571
+AES Is the text the same ? True
+
+Aes keysize = 192
+AES encryption: Elapsed=18224,9782 per encrypt 1,82249782
+AES decryption: Elapsed=23133,8553 per decrypt 2,31338553
+AES Is the text the same ? True
+
+Aes keysize = 256
+AES encryption: Elapsed=18694,6782 per encrypt 1,86946782
+AES decryption: Elapsed=22473,2642 per decrypt 2,24732642
+AES Is the text the same ? True
+
+Cant encrypt using rsa1024
+
+Cant encrypt using rsa2048
+
+END
+
