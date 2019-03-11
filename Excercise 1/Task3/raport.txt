@@ -1,0 +1,52 @@
+One approach is putting the key in a hard to guess location before the application starts and wipe the key once it was read to memory. The time in which the key is available is shortened. The attack time-frame is reduced, but still the key was there. Wiping the key works only for one application startup. Containers and microservices in the Cloud are known to be restarted once they crashed. A restart of the application is no longer possible as the key is gone.
+
+Vault is a service to manage secrets. It provides an API that gives access to secrets based on policies. Any user of the API needs to authenticate and only sees the secrets for which he is authorized. Vault encrypts data using 256-bit AES with GCM. 
+
+Vault allows shared keys using the Shamir Secret Sharing algorithm. 
+
+
+
+AWS CloudHSM 
+AWS CloudHSM runs in your own Amazon Virtual Private Cloud (VPC), enabling you to easily use your HSMs with applications running on your Amazon EC2 instances. With CloudHSM, you can use standard VPC security controls to manage access to your HSMs. Your applications connect to your HSMs using mutually authenticated SSL channels established by your HSM client software. Since your HSMs are located in Amazon datacenters near your EC2 instances, you can reduce the network latency between your applications and HSMs versus an on-premises HSM.
+
+A: AWS manages the hardware security module (HSM) appliance, but does not have access to your keys
+
+B: You control and manage your own keys
+
+C: Application performance improves (due to close proximity with AWS workloads)
+
+D: Secure key storage in tamper-resistent hardware available in multiple Availability Zones (AZs)
+
+E: Your HSMs are in your Virtual Private Cloud (VPC) and isolated from other AWS networks.
+
+Separation of duties and role-based access control is inherent in the design of the AWS CloudHSM. AWS monitors the health and network availability of your HSMs but is not involved in the creation and management of the key material stored within your HSMs. You control the HSMs and the generation and use of your encryption keys.
+
+
+StackExchange-blackbox
+
+Suppose you have a VCS repository (i.e. a Git or Mercurial repo) and certain files contain secrets such as passwords or SSL private keys. Often people just store such files "and hope that nobody finds them in the repo". That's not safe.
+
+With BlackBox, those files are stored encrypted using GPG. Access to the VCS repo without also having the right GPG keys makes it worthless to have the files. As long as you keep your GPG keys safe, you don't have to worry about storing your VCS repo on an untrusted server. Heck, even if you trust your server, now you don't have to trust the people that do backups of that server, or the people that handle the backup tapes!
+
+Rather than one GPG passphrase for all the files, each person with access has their own GPG keys in the system. Any file can be decrypted by anyone with their GPG key. This way, if one person leaves the company, you don't have to communicate a new password to everyone with access. Simply disable the one key that should no longer have access. The process for doing this is as easy as running 2 commands (1 to disable their key, 1 to re-encrypt all files.)
+
+Automated processes often need access to all the decrypted files. This is easy too. For example, suppose Git is being used for Puppet files. The master needs access to the decrypted version of all the files. Simply set up a GPG key for the Puppet master (or the role account that pushes new files to the Puppet master) and have that user run blackbox_postdeploy after any files are updated.
+
+GPG has many different ways to encrypt a file. BlackBox uses the mode that lets you specify a list of keys that can decrypt the message.
+
+If you have 5 people ("admins") that should be able to access the secrets, each creates a GPG key and adds their public key to the keychain. The GPG command used to encrypt the file lists all 5 key names, and therefore any 1 key can decrypt the file.
+
+To remove someone's access, remove that admin's key name (i.e. email address) from the list of admins and re-encrypt all the files. They can still read the .gpg file (assuming they have access to the repository) but they can't decrypt it any more.
+
+What if they kept a copy of the old repo before you removed access? Yes, they can decrypt old versions of the file. This is why when an admin leaves the team, you should change all your passwords, SSL certs, and so on. You should have been doing that before BlackBox, right?
+
+Why don't you use symmetric keys? In other words, why mess with all this GPG key stuff and instead why don't we just encrypt all the files with a single passphrase. Yes, GPG supports that, but then we are managing a shared password, which is fraught with problems. If someone "leaves the team" we would have to communicate to everyone a new password. Now we just have to remove their key. This scales better.
+
+How do automated processes decrypt without asking for a password? GPG requires a passphrase on a private key. However, it permits the creation of subkeys that have no passphrase. For automated processes, create a subkey that is only stored on the machine that needs to decrypt the files. For example, at Stack Exchange, when our Continuous Integration (CI) system pushes a code change to our Puppet masters, they run blackbox_postdeploy to decrypt all the files. The user that runs this code has a subkey that doesn't require a passphrase. Since we have many masters, each has its own key. And, yes, this means our Puppet Masters have to be very secure. However, they were already secure because, like, dude... if you can break into someone's puppet master you own their network.
+
+If you use Puppet, why didn't you just use hiera-eyaml? There are 4 reasons:
+
+This works with any Git or Mercurial repo, even if you aren't using Puppet.
+hiera-eyaml decrypts "on demand" which means your Puppet Master now uses a lot of CPU to decrypt keys every time it is contacted. It slows down your master, which, in my case, is already slow enough.
+This works with binary files, without having to ASCIIify them and paste them into a YAML file. Have you tried to do this with a cert that is 10K long and changes every few weeks? Ick.
+hiera-eyaml didn't exist when I wrote this.
