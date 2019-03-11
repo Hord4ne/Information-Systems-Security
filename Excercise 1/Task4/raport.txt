@@ -1,0 +1,15 @@
+﻿Encrypting
+Encrypting done!
+Signing
+Signing done!
+RSA result:
+Encrypted data: f/r1MS1Z35CNAxPnDYVEjgkxla9S6X/XH8kbAV6NQmITV5MzkByW7G4YGutG/j+bdJVemt+h2WI8hxXQwD4Xqe2W09kGVSHaar0ahxxD4jlc8lsDTtfgtUArDH112pUBYqUPYMFyb81THzLAj8QL1PcSI1RzM3UWmcNVYv0v7gE=
+Signed: wBlwY8tdZwhEpqu0KfovrHOBteFr0f+gxDg7rbsOF9f47/piWz+5xfu86HKqlj7SYzspbRNxkBB7Y3c1WjA6YaY6Knn6qDXIc0BXYkSJRTWJ1RgYuM9C6TzApX4zYrEUwOvZ7T3dcbQkiS7L9SwbKaWkmhse2Jb00kyCG7wUH3c=
+Veryfing singer
+Veryfing singer done!
+Decrypting
+Decrypting done!
+Decryted: Bb5fheEEKaQHoFuWsxWODg==
+HMACH HASH qw7BgirqwAxjozGcOW7w9dsh0nZMQfrwFojExBobNYvVbig2kP3ZnghcqqZCabVVfBZZf+0MgAUjEkXNSA+4Gw==
+Verified? True
+Message I'll send an SOS to the world
