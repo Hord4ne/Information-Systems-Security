@@ -1,0 +1,9 @@
+Testing with testRepetitions = 1000 and testIterations = 10000
+
+Md5: Elapsed=952,6243 per one hash 0,09526267
+
+SHA1: Elapsed=2334,8005 per one hash 0,23348017
+
+SHA512: Elapsed=6446,3315 per one hash 0,64463336
+
+PBKDF2: Elapsed=63657,7382 per one hash 6,36577394
