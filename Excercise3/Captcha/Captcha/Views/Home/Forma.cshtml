@@ -1,0 +1,13 @@
+﻿@using hbehr.recaptcha;
+@{
+    ViewBag.Title = "Forma";
+}
+
+<h2>Forma</h2>
+<form method="post">
+    <input type="text" name="myinput1" />
+    @ReCaptcha.GetCaptcha()
+    <!-- Will show your captcha as your configured Language,
+    if no language is defined it will show ReCaptcha default language (English) -->
+
+</form>
