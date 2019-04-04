@@ -1,0 +1,11 @@
+﻿@model OAuth2.Models.SubsResponse
+
+@{ 
+    ViewBag.Title = "YT Subs";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>The List:</h3>
+@foreach (var snippet in Model.Items)
+{
+    <p>@snippet.Snippet.Title</p>
+}

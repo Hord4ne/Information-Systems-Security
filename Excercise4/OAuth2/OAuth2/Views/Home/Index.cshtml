@@ -1,0 +1,15 @@
+﻿@using OAuth2.Models
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>OAuth2 example</h1>
+    <p>
+        Hello and welcome in a simple server-side web application to present entries from one of the main public providers like Google.
+    </p>
+    @using (Html.BeginForm("SendAuth", "Home", new { scope = Constants.YtScope }, FormMethod.Post))
+    {
+        <input type="submit" value="Yt subscriptions" class="btn btn-danger" />
+    }
+</div>
