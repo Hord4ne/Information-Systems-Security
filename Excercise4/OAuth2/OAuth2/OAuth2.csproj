@@ -143,6 +143,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\GmailMessage.cs" />
+    <Compile Include="Models\GmailMessagesResponse.cs" />
+    <Compile Include="Models\GmailRO.cs" />
     <Compile Include="Models\SubsItem.cs" />
     <Compile Include="Models\SubSnippet.cs" />
     <Compile Include="Models\SubsResponse.cs" />
@@ -193,6 +196,7 @@
     <Content Include="Views\Home\YoutubeSubs.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Gmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

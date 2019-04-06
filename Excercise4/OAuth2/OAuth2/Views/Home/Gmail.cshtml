@@ -1,0 +1,11 @@
+﻿@model OAuth2.Models.GmailMessagesResponse
+
+@{
+    ViewBag.Title = "Gmail Info";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>The List of message ids:</h3>
+@foreach (var msg in Model.Messages)
+{
+    <p>@msg.Id</p>
+}

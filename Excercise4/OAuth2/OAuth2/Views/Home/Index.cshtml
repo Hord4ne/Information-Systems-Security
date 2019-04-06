@@ -8,8 +8,16 @@
     <p>
         Hello and welcome in a simple server-side web application to present entries from one of the main public providers like Google.
     </p>
-    @using (Html.BeginForm("SendAuth", "Home", new { scope = Constants.YtScope }, FormMethod.Post))
+    @using (Html.BeginForm("SendAuth", "Home", new { scope = Constants.YtScope, redirect = Constants.YoutubeRedirect }, FormMethod.Post))
     {
         <input type="submit" value="Yt subscriptions" class="btn btn-danger" />
+    }
+    @using (Html.BeginForm("SendAuth", "Home", new { scope = Constants.GmailScope, redirect = Constants.GmailRedirect }, FormMethod.Post))
+    {
+        <input type="submit" value="Gmail" class="btn btn-warning" />
+    }
+    @using (Html.BeginForm("SendAuth", "Home", new { scope = Constants.Scopes, redirect = Constants.ScopesRedirect }, FormMethod.Post))
+    {
+        <input type="submit" value="Just scopes" class="btn btn-default" />
     }
 </div>
